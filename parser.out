@@ -1,0 +1,955 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    KEYWORD
+    LITERAL
+    SEPARATOR
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement
+Rule 3     statement_list -> statement statement_list
+Rule 4     statement -> declaration
+Rule 5     statement -> assignment
+Rule 6     statement -> print_statement
+Rule 7     statement -> if_statement
+Rule 8     statement -> while_statement
+Rule 9     declaration -> DATA_TYPE IDENTIFIER STATEMENT_END
+Rule 10    declaration -> DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END
+Rule 11    assignment -> IDENTIFIER ASSIGN expression STATEMENT_END
+Rule 12    print_statement -> PRINT LPAREN expression RPAREN STATEMENT_END
+Rule 13    if_statement -> IF expression LCURLY statement_list RCURLY
+Rule 14    if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY
+Rule 15    while_statement -> WHILE expression LCURLY statement_list RCURLY
+Rule 16    expression -> term
+Rule 17    expression -> term PLUS expression
+Rule 18    expression -> term MINUS expression
+Rule 19    expression -> term GREATER term
+Rule 20    expression -> term LESS term
+Rule 21    expression -> CONSTANT
+Rule 22    term -> factor
+Rule 23    term -> factor TIMES term
+Rule 24    term -> factor DIVIDE term
+Rule 25    factor -> NUMBER
+Rule 26    factor -> IDENTIFIER
+Rule 27    factor -> LPAREN expression RPAREN
+
+Terminals, with rules where they appear
+
+ASSIGN               : 10 11
+CONSTANT             : 21
+DATA_TYPE            : 9 10
+DIVIDE               : 24
+ELSE                 : 14
+GREATER              : 19
+IDENTIFIER           : 9 10 11 26
+IF                   : 13 14
+KEYWORD              : 
+LCURLY               : 13 14 14 15
+LESS                 : 20
+LITERAL              : 
+LPAREN               : 12 27
+MINUS                : 18
+NUMBER               : 25
+PLUS                 : 17
+PRINT                : 12
+RCURLY               : 13 14 14 15
+RPAREN               : 12 27
+SEPARATOR            : 
+STATEMENT_END        : 9 10 11 12
+TIMES                : 23
+WHILE                : 15
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment           : 5
+declaration          : 4
+expression           : 10 11 12 13 14 15 17 18 27
+factor               : 22 23 24
+if_statement         : 7
+print_statement      : 6
+program              : 0
+statement            : 2 3
+statement_list       : 1 3 13 14 14 15
+term                 : 16 17 18 19 19 20 20 23 24
+while_statement      : 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . declaration
+    (5) statement -> . assignment
+    (6) statement -> . print_statement
+    (7) statement -> . if_statement
+    (8) statement -> . while_statement
+    (9) declaration -> . DATA_TYPE IDENTIFIER STATEMENT_END
+    (10) declaration -> . DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END
+    (11) assignment -> . IDENTIFIER ASSIGN expression STATEMENT_END
+    (12) print_statement -> . PRINT LPAREN expression RPAREN STATEMENT_END
+    (13) if_statement -> . IF expression LCURLY statement_list RCURLY
+    (14) if_statement -> . IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY
+    (15) while_statement -> . WHILE expression LCURLY statement_list RCURLY
+
+    DATA_TYPE       shift and go to state 9
+    IDENTIFIER      shift and go to state 10
+    PRINT           shift and go to state 11
+    IF              shift and go to state 12
+    WHILE           shift and go to state 13
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    print_statement                shift and go to state 6
+    if_statement                   shift and go to state 7
+    while_statement                shift and go to state 8
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+
+    $end            reduce using rule 1 (program -> statement_list .)
+
+
+state 3
+
+    (2) statement_list -> statement .
+    (3) statement_list -> statement . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . declaration
+    (5) statement -> . assignment
+    (6) statement -> . print_statement
+    (7) statement -> . if_statement
+    (8) statement -> . while_statement
+    (9) declaration -> . DATA_TYPE IDENTIFIER STATEMENT_END
+    (10) declaration -> . DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END
+    (11) assignment -> . IDENTIFIER ASSIGN expression STATEMENT_END
+    (12) print_statement -> . PRINT LPAREN expression RPAREN STATEMENT_END
+    (13) if_statement -> . IF expression LCURLY statement_list RCURLY
+    (14) if_statement -> . IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY
+    (15) while_statement -> . WHILE expression LCURLY statement_list RCURLY
+
+    $end            reduce using rule 2 (statement_list -> statement .)
+    RCURLY          reduce using rule 2 (statement_list -> statement .)
+    DATA_TYPE       shift and go to state 9
+    IDENTIFIER      shift and go to state 10
+    PRINT           shift and go to state 11
+    IF              shift and go to state 12
+    WHILE           shift and go to state 13
+
+    statement                      shift and go to state 3
+    statement_list                 shift and go to state 14
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    print_statement                shift and go to state 6
+    if_statement                   shift and go to state 7
+    while_statement                shift and go to state 8
+
+state 4
+
+    (4) statement -> declaration .
+
+    DATA_TYPE       reduce using rule 4 (statement -> declaration .)
+    IDENTIFIER      reduce using rule 4 (statement -> declaration .)
+    PRINT           reduce using rule 4 (statement -> declaration .)
+    IF              reduce using rule 4 (statement -> declaration .)
+    WHILE           reduce using rule 4 (statement -> declaration .)
+    $end            reduce using rule 4 (statement -> declaration .)
+    RCURLY          reduce using rule 4 (statement -> declaration .)
+
+
+state 5
+
+    (5) statement -> assignment .
+
+    DATA_TYPE       reduce using rule 5 (statement -> assignment .)
+    IDENTIFIER      reduce using rule 5 (statement -> assignment .)
+    PRINT           reduce using rule 5 (statement -> assignment .)
+    IF              reduce using rule 5 (statement -> assignment .)
+    WHILE           reduce using rule 5 (statement -> assignment .)
+    $end            reduce using rule 5 (statement -> assignment .)
+    RCURLY          reduce using rule 5 (statement -> assignment .)
+
+
+state 6
+
+    (6) statement -> print_statement .
+
+    DATA_TYPE       reduce using rule 6 (statement -> print_statement .)
+    IDENTIFIER      reduce using rule 6 (statement -> print_statement .)
+    PRINT           reduce using rule 6 (statement -> print_statement .)
+    IF              reduce using rule 6 (statement -> print_statement .)
+    WHILE           reduce using rule 6 (statement -> print_statement .)
+    $end            reduce using rule 6 (statement -> print_statement .)
+    RCURLY          reduce using rule 6 (statement -> print_statement .)
+
+
+state 7
+
+    (7) statement -> if_statement .
+
+    DATA_TYPE       reduce using rule 7 (statement -> if_statement .)
+    IDENTIFIER      reduce using rule 7 (statement -> if_statement .)
+    PRINT           reduce using rule 7 (statement -> if_statement .)
+    IF              reduce using rule 7 (statement -> if_statement .)
+    WHILE           reduce using rule 7 (statement -> if_statement .)
+    $end            reduce using rule 7 (statement -> if_statement .)
+    RCURLY          reduce using rule 7 (statement -> if_statement .)
+
+
+state 8
+
+    (8) statement -> while_statement .
+
+    DATA_TYPE       reduce using rule 8 (statement -> while_statement .)
+    IDENTIFIER      reduce using rule 8 (statement -> while_statement .)
+    PRINT           reduce using rule 8 (statement -> while_statement .)
+    IF              reduce using rule 8 (statement -> while_statement .)
+    WHILE           reduce using rule 8 (statement -> while_statement .)
+    $end            reduce using rule 8 (statement -> while_statement .)
+    RCURLY          reduce using rule 8 (statement -> while_statement .)
+
+
+state 9
+
+    (9) declaration -> DATA_TYPE . IDENTIFIER STATEMENT_END
+    (10) declaration -> DATA_TYPE . IDENTIFIER ASSIGN expression STATEMENT_END
+
+    IDENTIFIER      shift and go to state 15
+
+
+state 10
+
+    (11) assignment -> IDENTIFIER . ASSIGN expression STATEMENT_END
+
+    ASSIGN          shift and go to state 16
+
+
+state 11
+
+    (12) print_statement -> PRINT . LPAREN expression RPAREN STATEMENT_END
+
+    LPAREN          shift and go to state 17
+
+
+state 12
+
+    (13) if_statement -> IF . expression LCURLY statement_list RCURLY
+    (14) if_statement -> IF . expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY
+    (16) expression -> . term
+    (17) expression -> . term PLUS expression
+    (18) expression -> . term MINUS expression
+    (19) expression -> . term GREATER term
+    (20) expression -> . term LESS term
+    (21) expression -> . CONSTANT
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    CONSTANT        shift and go to state 20
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 18
+    term                           shift and go to state 19
+    factor                         shift and go to state 21
+
+state 13
+
+    (15) while_statement -> WHILE . expression LCURLY statement_list RCURLY
+    (16) expression -> . term
+    (17) expression -> . term PLUS expression
+    (18) expression -> . term MINUS expression
+    (19) expression -> . term GREATER term
+    (20) expression -> . term LESS term
+    (21) expression -> . CONSTANT
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    CONSTANT        shift and go to state 20
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 25
+    term                           shift and go to state 19
+    factor                         shift and go to state 21
+
+state 14
+
+    (3) statement_list -> statement statement_list .
+
+    $end            reduce using rule 3 (statement_list -> statement statement_list .)
+    RCURLY          reduce using rule 3 (statement_list -> statement statement_list .)
+
+
+state 15
+
+    (9) declaration -> DATA_TYPE IDENTIFIER . STATEMENT_END
+    (10) declaration -> DATA_TYPE IDENTIFIER . ASSIGN expression STATEMENT_END
+
+    STATEMENT_END   shift and go to state 26
+    ASSIGN          shift and go to state 27
+
+
+state 16
+
+    (11) assignment -> IDENTIFIER ASSIGN . expression STATEMENT_END
+    (16) expression -> . term
+    (17) expression -> . term PLUS expression
+    (18) expression -> . term MINUS expression
+    (19) expression -> . term GREATER term
+    (20) expression -> . term LESS term
+    (21) expression -> . CONSTANT
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    CONSTANT        shift and go to state 20
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 28
+    term                           shift and go to state 19
+    factor                         shift and go to state 21
+
+state 17
+
+    (12) print_statement -> PRINT LPAREN . expression RPAREN STATEMENT_END
+    (16) expression -> . term
+    (17) expression -> . term PLUS expression
+    (18) expression -> . term MINUS expression
+    (19) expression -> . term GREATER term
+    (20) expression -> . term LESS term
+    (21) expression -> . CONSTANT
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    CONSTANT        shift and go to state 20
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 29
+    term                           shift and go to state 19
+    factor                         shift and go to state 21
+
+state 18
+
+    (13) if_statement -> IF expression . LCURLY statement_list RCURLY
+    (14) if_statement -> IF expression . LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY
+
+    LCURLY          shift and go to state 30
+
+
+state 19
+
+    (16) expression -> term .
+    (17) expression -> term . PLUS expression
+    (18) expression -> term . MINUS expression
+    (19) expression -> term . GREATER term
+    (20) expression -> term . LESS term
+
+    LCURLY          reduce using rule 16 (expression -> term .)
+    STATEMENT_END   reduce using rule 16 (expression -> term .)
+    RPAREN          reduce using rule 16 (expression -> term .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    GREATER         shift and go to state 33
+    LESS            shift and go to state 34
+
+
+state 20
+
+    (21) expression -> CONSTANT .
+
+    LCURLY          reduce using rule 21 (expression -> CONSTANT .)
+    STATEMENT_END   reduce using rule 21 (expression -> CONSTANT .)
+    RPAREN          reduce using rule 21 (expression -> CONSTANT .)
+
+
+state 21
+
+    (22) term -> factor .
+    (23) term -> factor . TIMES term
+    (24) term -> factor . DIVIDE term
+
+    PLUS            reduce using rule 22 (term -> factor .)
+    MINUS           reduce using rule 22 (term -> factor .)
+    GREATER         reduce using rule 22 (term -> factor .)
+    LESS            reduce using rule 22 (term -> factor .)
+    LCURLY          reduce using rule 22 (term -> factor .)
+    STATEMENT_END   reduce using rule 22 (term -> factor .)
+    RPAREN          reduce using rule 22 (term -> factor .)
+    TIMES           shift and go to state 35
+    DIVIDE          shift and go to state 36
+
+
+state 22
+
+    (25) factor -> NUMBER .
+
+    TIMES           reduce using rule 25 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 25 (factor -> NUMBER .)
+    PLUS            reduce using rule 25 (factor -> NUMBER .)
+    MINUS           reduce using rule 25 (factor -> NUMBER .)
+    GREATER         reduce using rule 25 (factor -> NUMBER .)
+    LESS            reduce using rule 25 (factor -> NUMBER .)
+    LCURLY          reduce using rule 25 (factor -> NUMBER .)
+    STATEMENT_END   reduce using rule 25 (factor -> NUMBER .)
+    RPAREN          reduce using rule 25 (factor -> NUMBER .)
+
+
+state 23
+
+    (26) factor -> IDENTIFIER .
+
+    TIMES           reduce using rule 26 (factor -> IDENTIFIER .)
+    DIVIDE          reduce using rule 26 (factor -> IDENTIFIER .)
+    PLUS            reduce using rule 26 (factor -> IDENTIFIER .)
+    MINUS           reduce using rule 26 (factor -> IDENTIFIER .)
+    GREATER         reduce using rule 26 (factor -> IDENTIFIER .)
+    LESS            reduce using rule 26 (factor -> IDENTIFIER .)
+    LCURLY          reduce using rule 26 (factor -> IDENTIFIER .)
+    STATEMENT_END   reduce using rule 26 (factor -> IDENTIFIER .)
+    RPAREN          reduce using rule 26 (factor -> IDENTIFIER .)
+
+
+state 24
+
+    (27) factor -> LPAREN . expression RPAREN
+    (16) expression -> . term
+    (17) expression -> . term PLUS expression
+    (18) expression -> . term MINUS expression
+    (19) expression -> . term GREATER term
+    (20) expression -> . term LESS term
+    (21) expression -> . CONSTANT
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    CONSTANT        shift and go to state 20
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 37
+    term                           shift and go to state 19
+    factor                         shift and go to state 21
+
+state 25
+
+    (15) while_statement -> WHILE expression . LCURLY statement_list RCURLY
+
+    LCURLY          shift and go to state 38
+
+
+state 26
+
+    (9) declaration -> DATA_TYPE IDENTIFIER STATEMENT_END .
+
+    DATA_TYPE       reduce using rule 9 (declaration -> DATA_TYPE IDENTIFIER STATEMENT_END .)
+    IDENTIFIER      reduce using rule 9 (declaration -> DATA_TYPE IDENTIFIER STATEMENT_END .)
+    PRINT           reduce using rule 9 (declaration -> DATA_TYPE IDENTIFIER STATEMENT_END .)
+    IF              reduce using rule 9 (declaration -> DATA_TYPE IDENTIFIER STATEMENT_END .)
+    WHILE           reduce using rule 9 (declaration -> DATA_TYPE IDENTIFIER STATEMENT_END .)
+    $end            reduce using rule 9 (declaration -> DATA_TYPE IDENTIFIER STATEMENT_END .)
+    RCURLY          reduce using rule 9 (declaration -> DATA_TYPE IDENTIFIER STATEMENT_END .)
+
+
+state 27
+
+    (10) declaration -> DATA_TYPE IDENTIFIER ASSIGN . expression STATEMENT_END
+    (16) expression -> . term
+    (17) expression -> . term PLUS expression
+    (18) expression -> . term MINUS expression
+    (19) expression -> . term GREATER term
+    (20) expression -> . term LESS term
+    (21) expression -> . CONSTANT
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    CONSTANT        shift and go to state 20
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    expression                     shift and go to state 39
+    term                           shift and go to state 19
+    factor                         shift and go to state 21
+
+state 28
+
+    (11) assignment -> IDENTIFIER ASSIGN expression . STATEMENT_END
+
+    STATEMENT_END   shift and go to state 40
+
+
+state 29
+
+    (12) print_statement -> PRINT LPAREN expression . RPAREN STATEMENT_END
+
+    RPAREN          shift and go to state 41
+
+
+state 30
+
+    (13) if_statement -> IF expression LCURLY . statement_list RCURLY
+    (14) if_statement -> IF expression LCURLY . statement_list RCURLY ELSE LCURLY statement_list RCURLY
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . declaration
+    (5) statement -> . assignment
+    (6) statement -> . print_statement
+    (7) statement -> . if_statement
+    (8) statement -> . while_statement
+    (9) declaration -> . DATA_TYPE IDENTIFIER STATEMENT_END
+    (10) declaration -> . DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END
+    (11) assignment -> . IDENTIFIER ASSIGN expression STATEMENT_END
+    (12) print_statement -> . PRINT LPAREN expression RPAREN STATEMENT_END
+    (13) if_statement -> . IF expression LCURLY statement_list RCURLY
+    (14) if_statement -> . IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY
+    (15) while_statement -> . WHILE expression LCURLY statement_list RCURLY
+
+    DATA_TYPE       shift and go to state 9
+    IDENTIFIER      shift and go to state 10
+    PRINT           shift and go to state 11
+    IF              shift and go to state 12
+    WHILE           shift and go to state 13
+
+    statement_list                 shift and go to state 42
+    statement                      shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    print_statement                shift and go to state 6
+    if_statement                   shift and go to state 7
+    while_statement                shift and go to state 8
+
+state 31
+
+    (17) expression -> term PLUS . expression
+    (16) expression -> . term
+    (17) expression -> . term PLUS expression
+    (18) expression -> . term MINUS expression
+    (19) expression -> . term GREATER term
+    (20) expression -> . term LESS term
+    (21) expression -> . CONSTANT
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    CONSTANT        shift and go to state 20
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    term                           shift and go to state 19
+    expression                     shift and go to state 43
+    factor                         shift and go to state 21
+
+state 32
+
+    (18) expression -> term MINUS . expression
+    (16) expression -> . term
+    (17) expression -> . term PLUS expression
+    (18) expression -> . term MINUS expression
+    (19) expression -> . term GREATER term
+    (20) expression -> . term LESS term
+    (21) expression -> . CONSTANT
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    CONSTANT        shift and go to state 20
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    term                           shift and go to state 19
+    expression                     shift and go to state 44
+    factor                         shift and go to state 21
+
+state 33
+
+    (19) expression -> term GREATER . term
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    term                           shift and go to state 45
+    factor                         shift and go to state 21
+
+state 34
+
+    (20) expression -> term LESS . term
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    term                           shift and go to state 46
+    factor                         shift and go to state 21
+
+state 35
+
+    (23) term -> factor TIMES . term
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    factor                         shift and go to state 21
+    term                           shift and go to state 47
+
+state 36
+
+    (24) term -> factor DIVIDE . term
+    (22) term -> . factor
+    (23) term -> . factor TIMES term
+    (24) term -> . factor DIVIDE term
+    (25) factor -> . NUMBER
+    (26) factor -> . IDENTIFIER
+    (27) factor -> . LPAREN expression RPAREN
+
+    NUMBER          shift and go to state 22
+    IDENTIFIER      shift and go to state 23
+    LPAREN          shift and go to state 24
+
+    factor                         shift and go to state 21
+    term                           shift and go to state 48
+
+state 37
+
+    (27) factor -> LPAREN expression . RPAREN
+
+    RPAREN          shift and go to state 49
+
+
+state 38
+
+    (15) while_statement -> WHILE expression LCURLY . statement_list RCURLY
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . declaration
+    (5) statement -> . assignment
+    (6) statement -> . print_statement
+    (7) statement -> . if_statement
+    (8) statement -> . while_statement
+    (9) declaration -> . DATA_TYPE IDENTIFIER STATEMENT_END
+    (10) declaration -> . DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END
+    (11) assignment -> . IDENTIFIER ASSIGN expression STATEMENT_END
+    (12) print_statement -> . PRINT LPAREN expression RPAREN STATEMENT_END
+    (13) if_statement -> . IF expression LCURLY statement_list RCURLY
+    (14) if_statement -> . IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY
+    (15) while_statement -> . WHILE expression LCURLY statement_list RCURLY
+
+    DATA_TYPE       shift and go to state 9
+    IDENTIFIER      shift and go to state 10
+    PRINT           shift and go to state 11
+    IF              shift and go to state 12
+    WHILE           shift and go to state 13
+
+    statement_list                 shift and go to state 50
+    statement                      shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    print_statement                shift and go to state 6
+    if_statement                   shift and go to state 7
+    while_statement                shift and go to state 8
+
+state 39
+
+    (10) declaration -> DATA_TYPE IDENTIFIER ASSIGN expression . STATEMENT_END
+
+    STATEMENT_END   shift and go to state 51
+
+
+state 40
+
+    (11) assignment -> IDENTIFIER ASSIGN expression STATEMENT_END .
+
+    DATA_TYPE       reduce using rule 11 (assignment -> IDENTIFIER ASSIGN expression STATEMENT_END .)
+    IDENTIFIER      reduce using rule 11 (assignment -> IDENTIFIER ASSIGN expression STATEMENT_END .)
+    PRINT           reduce using rule 11 (assignment -> IDENTIFIER ASSIGN expression STATEMENT_END .)
+    IF              reduce using rule 11 (assignment -> IDENTIFIER ASSIGN expression STATEMENT_END .)
+    WHILE           reduce using rule 11 (assignment -> IDENTIFIER ASSIGN expression STATEMENT_END .)
+    $end            reduce using rule 11 (assignment -> IDENTIFIER ASSIGN expression STATEMENT_END .)
+    RCURLY          reduce using rule 11 (assignment -> IDENTIFIER ASSIGN expression STATEMENT_END .)
+
+
+state 41
+
+    (12) print_statement -> PRINT LPAREN expression RPAREN . STATEMENT_END
+
+    STATEMENT_END   shift and go to state 52
+
+
+state 42
+
+    (13) if_statement -> IF expression LCURLY statement_list . RCURLY
+    (14) if_statement -> IF expression LCURLY statement_list . RCURLY ELSE LCURLY statement_list RCURLY
+
+    RCURLY          shift and go to state 53
+
+
+state 43
+
+    (17) expression -> term PLUS expression .
+
+    LCURLY          reduce using rule 17 (expression -> term PLUS expression .)
+    STATEMENT_END   reduce using rule 17 (expression -> term PLUS expression .)
+    RPAREN          reduce using rule 17 (expression -> term PLUS expression .)
+
+
+state 44
+
+    (18) expression -> term MINUS expression .
+
+    LCURLY          reduce using rule 18 (expression -> term MINUS expression .)
+    STATEMENT_END   reduce using rule 18 (expression -> term MINUS expression .)
+    RPAREN          reduce using rule 18 (expression -> term MINUS expression .)
+
+
+state 45
+
+    (19) expression -> term GREATER term .
+
+    LCURLY          reduce using rule 19 (expression -> term GREATER term .)
+    STATEMENT_END   reduce using rule 19 (expression -> term GREATER term .)
+    RPAREN          reduce using rule 19 (expression -> term GREATER term .)
+
+
+state 46
+
+    (20) expression -> term LESS term .
+
+    LCURLY          reduce using rule 20 (expression -> term LESS term .)
+    STATEMENT_END   reduce using rule 20 (expression -> term LESS term .)
+    RPAREN          reduce using rule 20 (expression -> term LESS term .)
+
+
+state 47
+
+    (23) term -> factor TIMES term .
+
+    PLUS            reduce using rule 23 (term -> factor TIMES term .)
+    MINUS           reduce using rule 23 (term -> factor TIMES term .)
+    GREATER         reduce using rule 23 (term -> factor TIMES term .)
+    LESS            reduce using rule 23 (term -> factor TIMES term .)
+    LCURLY          reduce using rule 23 (term -> factor TIMES term .)
+    STATEMENT_END   reduce using rule 23 (term -> factor TIMES term .)
+    RPAREN          reduce using rule 23 (term -> factor TIMES term .)
+
+
+state 48
+
+    (24) term -> factor DIVIDE term .
+
+    PLUS            reduce using rule 24 (term -> factor DIVIDE term .)
+    MINUS           reduce using rule 24 (term -> factor DIVIDE term .)
+    GREATER         reduce using rule 24 (term -> factor DIVIDE term .)
+    LESS            reduce using rule 24 (term -> factor DIVIDE term .)
+    LCURLY          reduce using rule 24 (term -> factor DIVIDE term .)
+    STATEMENT_END   reduce using rule 24 (term -> factor DIVIDE term .)
+    RPAREN          reduce using rule 24 (term -> factor DIVIDE term .)
+
+
+state 49
+
+    (27) factor -> LPAREN expression RPAREN .
+
+    TIMES           reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    GREATER         reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    LESS            reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    LCURLY          reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    STATEMENT_END   reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 27 (factor -> LPAREN expression RPAREN .)
+
+
+state 50
+
+    (15) while_statement -> WHILE expression LCURLY statement_list . RCURLY
+
+    RCURLY          shift and go to state 54
+
+
+state 51
+
+    (10) declaration -> DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END .
+
+    DATA_TYPE       reduce using rule 10 (declaration -> DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END .)
+    IDENTIFIER      reduce using rule 10 (declaration -> DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END .)
+    PRINT           reduce using rule 10 (declaration -> DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END .)
+    IF              reduce using rule 10 (declaration -> DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END .)
+    WHILE           reduce using rule 10 (declaration -> DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END .)
+    $end            reduce using rule 10 (declaration -> DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END .)
+    RCURLY          reduce using rule 10 (declaration -> DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END .)
+
+
+state 52
+
+    (12) print_statement -> PRINT LPAREN expression RPAREN STATEMENT_END .
+
+    DATA_TYPE       reduce using rule 12 (print_statement -> PRINT LPAREN expression RPAREN STATEMENT_END .)
+    IDENTIFIER      reduce using rule 12 (print_statement -> PRINT LPAREN expression RPAREN STATEMENT_END .)
+    PRINT           reduce using rule 12 (print_statement -> PRINT LPAREN expression RPAREN STATEMENT_END .)
+    IF              reduce using rule 12 (print_statement -> PRINT LPAREN expression RPAREN STATEMENT_END .)
+    WHILE           reduce using rule 12 (print_statement -> PRINT LPAREN expression RPAREN STATEMENT_END .)
+    $end            reduce using rule 12 (print_statement -> PRINT LPAREN expression RPAREN STATEMENT_END .)
+    RCURLY          reduce using rule 12 (print_statement -> PRINT LPAREN expression RPAREN STATEMENT_END .)
+
+
+state 53
+
+    (13) if_statement -> IF expression LCURLY statement_list RCURLY .
+    (14) if_statement -> IF expression LCURLY statement_list RCURLY . ELSE LCURLY statement_list RCURLY
+
+    DATA_TYPE       reduce using rule 13 (if_statement -> IF expression LCURLY statement_list RCURLY .)
+    IDENTIFIER      reduce using rule 13 (if_statement -> IF expression LCURLY statement_list RCURLY .)
+    PRINT           reduce using rule 13 (if_statement -> IF expression LCURLY statement_list RCURLY .)
+    IF              reduce using rule 13 (if_statement -> IF expression LCURLY statement_list RCURLY .)
+    WHILE           reduce using rule 13 (if_statement -> IF expression LCURLY statement_list RCURLY .)
+    $end            reduce using rule 13 (if_statement -> IF expression LCURLY statement_list RCURLY .)
+    RCURLY          reduce using rule 13 (if_statement -> IF expression LCURLY statement_list RCURLY .)
+    ELSE            shift and go to state 55
+
+
+state 54
+
+    (15) while_statement -> WHILE expression LCURLY statement_list RCURLY .
+
+    DATA_TYPE       reduce using rule 15 (while_statement -> WHILE expression LCURLY statement_list RCURLY .)
+    IDENTIFIER      reduce using rule 15 (while_statement -> WHILE expression LCURLY statement_list RCURLY .)
+    PRINT           reduce using rule 15 (while_statement -> WHILE expression LCURLY statement_list RCURLY .)
+    IF              reduce using rule 15 (while_statement -> WHILE expression LCURLY statement_list RCURLY .)
+    WHILE           reduce using rule 15 (while_statement -> WHILE expression LCURLY statement_list RCURLY .)
+    $end            reduce using rule 15 (while_statement -> WHILE expression LCURLY statement_list RCURLY .)
+    RCURLY          reduce using rule 15 (while_statement -> WHILE expression LCURLY statement_list RCURLY .)
+
+
+state 55
+
+    (14) if_statement -> IF expression LCURLY statement_list RCURLY ELSE . LCURLY statement_list RCURLY
+
+    LCURLY          shift and go to state 56
+
+
+state 56
+
+    (14) if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY . statement_list RCURLY
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement statement_list
+    (4) statement -> . declaration
+    (5) statement -> . assignment
+    (6) statement -> . print_statement
+    (7) statement -> . if_statement
+    (8) statement -> . while_statement
+    (9) declaration -> . DATA_TYPE IDENTIFIER STATEMENT_END
+    (10) declaration -> . DATA_TYPE IDENTIFIER ASSIGN expression STATEMENT_END
+    (11) assignment -> . IDENTIFIER ASSIGN expression STATEMENT_END
+    (12) print_statement -> . PRINT LPAREN expression RPAREN STATEMENT_END
+    (13) if_statement -> . IF expression LCURLY statement_list RCURLY
+    (14) if_statement -> . IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY
+    (15) while_statement -> . WHILE expression LCURLY statement_list RCURLY
+
+    DATA_TYPE       shift and go to state 9
+    IDENTIFIER      shift and go to state 10
+    PRINT           shift and go to state 11
+    IF              shift and go to state 12
+    WHILE           shift and go to state 13
+
+    statement_list                 shift and go to state 57
+    statement                      shift and go to state 3
+    declaration                    shift and go to state 4
+    assignment                     shift and go to state 5
+    print_statement                shift and go to state 6
+    if_statement                   shift and go to state 7
+    while_statement                shift and go to state 8
+
+state 57
+
+    (14) if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list . RCURLY
+
+    RCURLY          shift and go to state 58
+
+
+state 58
+
+    (14) if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY .
+
+    DATA_TYPE       reduce using rule 14 (if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY .)
+    IDENTIFIER      reduce using rule 14 (if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY .)
+    PRINT           reduce using rule 14 (if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY .)
+    IF              reduce using rule 14 (if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY .)
+    WHILE           reduce using rule 14 (if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY .)
+    $end            reduce using rule 14 (if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY .)
+    RCURLY          reduce using rule 14 (if_statement -> IF expression LCURLY statement_list RCURLY ELSE LCURLY statement_list RCURLY .)
+
